@@ -1,9 +1,15 @@
-import Data.Set (Set)
-import qualified Data.Set as Set
-
-main = print (Set.fromList (take 10 (primeFactors 0 0)))
+main = print (find500factors (primeFactors 0 0))
 
 primeList = take 500 primes
+
+find500factors :: [(Integer, [(Integer, Integer)])] -> Integer
+find500factors (x:xs)
+	| numFactors (snd x) > 500	= fst x
+	| otherwise					= find500factors xs
+
+numFactors :: [(Integer, Integer)] -> Integer
+numFactors [] 			= 1
+numFactors ((_,x):xs) 	= (x+1) * (numFactors xs) 
 
 -- Generates a list of prime factors for triangle numbers, always call 0 0 first
 --		i: iteration
