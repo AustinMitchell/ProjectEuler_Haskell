@@ -1,10 +1,12 @@
 import qualified Data.Vector as V
 
 main = print (numArrangements numTileSlots tileSet)
+--main = print (numTiles 10 tileSet)
+
 
 numTileSlots = 5
-facList = V.fromList(take numTileSlots (buildFactorial 0 0))
-tileSet = [(2, 0),(3, 0),(4, 0)]
+facList = V.fromList(take (numTileSlots+1) (buildFactorial 0 0))
+tileSet = [(2,0),(3,0),(4,0)]
 
 -- Builds a list of factorials in O(n) time
 --		n: Current index to compute. Should start at 0 to run properly
